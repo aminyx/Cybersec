@@ -1,0 +1,113 @@
+# Автопроверка портфолио-проектов студента.
+#
+# Что делает: на каждый push/PR проверяет, что проект оформлен по стандарту
+# (README, лицензия, структура, .gitignore), прогоняет линтер и базовый
+# security-скан секретов. Это учит студента промышленной гигиене репозитория.
+#
+# Как использовать в СВОЁМ проекте:
+#   1. Скопируй этот файл в <твой-проект>/.github/workflows/project-check.yml
+#   2. Запушь — вкладка Actions покажет результат.
+#   3. Зелёная галочка = проект оформлен профессионально.
+#
+# Ничего платного не требует. Все инструменты — бесплатные и open-source.
+
+name: project-check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    name: Гигиена репозитория
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Проверка обязательных файлов
+        run: |
+          fail=0
+          check() { if [ -e "$1" ]; then echo "  ok  $1"; else echo "  MISS $1"; fail=1; fi; }
+          echo "== Обязательные файлы =="
+          # README в любом регистре
+          if ls README* >/dev/null 2>&1; then echo "  ok  README"; else echo "  MISS README"; fail=1; fi
+          check LICENSE
+          check .gitignore
+          if [ "$fail" = "1" ]; then
+            echo "::error::Не хватает обязательных файлов (README / LICENSE / .gitignore)"
+            exit 1
+          fi
+
+      - name: README не пустой и содержит разделы
+        run: |
+          readme=$(ls README* | head -n1)
+          words=$(wc -w < "$readme")
+          echo "README: $words слов"
+          if [ "$words" -lt 40 ]; then
+            echo "::error::README слишком короткий (<40 слов). Опиши: что делает, установка, использование."
+            exit 1
+          fi
+          grep -qiE 'install|установ|usage|использ|запуск' "$readme" \
+            || echo "::warning::В README нет раздела про установку/запуск — добавь."
+
+  secrets:
+    name: Поиск утёкших секретов
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # gitleaks проверяет всю историю
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  python:
+    name: Python — стиль и безопасность
+    runs-on: ubuntu-latest
+    # запускается только если в репо есть Python
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Есть ли Python?
+        id: detect
+        run: |
+          if ls **/*.py *.py >/dev/null 2>&1; then
+            echo "has_py=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_py=false" >> "$GITHUB_OUTPUT"
+            echo "Python-файлов нет — пропускаю."
+          fi
+
+      - name: Setup Python
+        if: steps.detect.outputs.has_py == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Установка инструментов
+        if: steps.detect.outputs.has_py == 'true'
+        run: pip install ruff bandit
+
+      - name: ruff (стиль и ошибки)
+        if: steps.detect.outputs.has_py == 'true'
+        run: ruff check . || echo "::warning::ruff нашёл замечания по стилю — почини для чистого проекта."
+
+      - name: bandit (security-линтер)
+        if: steps.detect.outputs.has_py == 'true'
+        run: bandit -r . -ll || echo "::warning::bandit нашёл потенциальные проблемы безопасности — разбери их."
+
+      - name: requirements.txt на уязвимости
+        if: steps.detect.outputs.has_py == 'true'
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install pip-audit
+            pip-audit -r requirements.txt || echo "::warning::pip-audit нашёл уязвимые зависимости."
+          else
+            echo "::warning::Нет requirements.txt — зафиксируй зависимости."
+          fi

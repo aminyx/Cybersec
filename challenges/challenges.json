@@ -1,0 +1,74 @@
+{
+  "_comment": "Флаги хранятся ТОЛЬКО как SHA-256. Формат флага: CSC{...}. Проверка: python check.py",
+  "challenges": [
+    {
+      "id": "w01-base64",
+      "title": "Неделя 1 — Кодирование ≠ шифрование",
+      "level": "warmup",
+      "minutes": 10,
+      "after_day": 19,
+      "task": "Строка ниже завёрнута в Base64 дважды. Разверни оба слоя и достань флаг.\n\n  UTFORGUySmhjMlUyTkY5dVpWOXphR2xtY205MllXNXBaWDA9\n\nФормат флага: CSC{...}",
+      "hints": [
+        "Это выглядит как Base64 (буквы, цифры, +/=). Раскодируй.",
+        "После первого раскодирования получишь ещё одну строку — раскодируй её тоже.",
+        "Инструмент: CyberChef (Magic / From Base64) или `base64 -d` в Linux."
+      ],
+      "flag_sha256": "7eaa07cf3052fb7944def8061be57ffe7681aebc85682ca8ab7ab4f04e81f6b4"
+    },
+    {
+      "id": "w02-caesar",
+      "title": "Неделя 2 — Сдвиг",
+      "level": "warmup",
+      "minutes": 10,
+      "after_day": 19,
+      "task": "Каждая буква сдвинута на 13 позиций. Верни на место.\n\n  PFP{ebg13_fyvfuxbz_cebfgb}",
+      "hints": [
+        "Сдвиг на 13 — это ROT13.",
+        "CyberChef → ROT13, или `tr 'A-Za-z' 'N-ZA-Mn-za-m'`."
+      ],
+      "flag_sha256": "5374076681be06a3c7fe7ee736741af01817a875b08dc8f0ed65010ae5039196"
+    },
+    {
+      "id": "w03-hash-id",
+      "title": "Неделя 3 — Опознай хэш",
+      "level": "easy",
+      "minutes": 15,
+      "after_day": 16,
+      "task": "Дан хэш:\n\n  9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08\n\nОпредели алгоритм и найди исходное слово (оно короткое и очень частое в паролях).\nФлаг: CSC{<название_алгоритма_маленькими_буквами>}  например CSC{md5}",
+      "hints": [
+        "Длина 64 hex-символа = 256 бит. Какой это алгоритм?",
+        "Сам хэш — от слова 'test'. Проверь на crackstation.net.",
+        "Флаг — про АЛГОРИТМ, а не про слово."
+      ],
+      "flag_sha256": "74452934274977864f217aa5ef09fe384a6805b192facadbcc16be5c49b8e80c"
+    },
+    {
+      "id": "w04-logs",
+      "title": "Неделя 4 — Атакующий в логах",
+      "level": "easy",
+      "minutes": 20,
+      "after_day": 12,
+      "task": "В файле sample-auth.log (рядом с этим заданием) — попытки входа по SSH.\nНайди IP, с которого больше всего НЕУДАЧНЫХ попыток (брутфорс).\nФлаг: CSC{<этот_IP>}   например CSC{10.0.0.1}",
+      "hints": [
+        "Ищи строки 'Failed password'.",
+        "grep 'Failed password' sample-auth.log | grep -oE '([0-9]+\\.){3}[0-9]+' | sort | uniq -c | sort -nr",
+        "Верхняя строка результата — самый активный атакующий."
+      ],
+      "flag_sha256": "ca6c54dcd3adb51f74aa22ba40d3c4966da7cdd09ab7aa84270df2e3a32680d0"
+    },
+    {
+      "id": "w05-http",
+      "title": "Неделя 5 — Кто ходил на сервер",
+      "level": "easy",
+      "minutes": 20,
+      "after_day": 62,
+      "task": "В access.log (рядом) один запрос сделан не браузером, а инструментом сканирования.\nНайди, какой ЗАГОЛОВОК его выдал, и получишь флаг.\nФлаг: CSC{User-Agent_vydal_tebya}  — но сам убедись, ПОЧЕМУ, найдя строку с подозрительным User-Agent (sqlmap/nikto/curl).",
+      "hints": [
+        "Смотри поле User-Agent в каждой строке.",
+        "Браузеры пишут 'Mozilla/5.0...'. Инструменты часто оставляют своё имя.",
+        "grep -iE 'sqlmap|nikto|nmap|curl|python' access.log"
+      ],
+      "flag_sha256": "9e1a3f78c5dca92748c9c312c69dad9db2d18780327cf29eb8d209aa37fb2b86"
+    }
+  ]
+}

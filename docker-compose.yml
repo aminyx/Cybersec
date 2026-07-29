@@ -1,0 +1,28 @@
+# Dev-окружение одной командой:
+#
+#   docker compose up            → пересобрать данные и открыть сайт на http://localhost:8129
+#   docker compose run --rm tools python scripts/check_repo.py     → валидация репозитория
+#   docker compose run --rm tools python challenges/check.py       → CTF
+#   docker compose run --rm tools python assets/generate_certificate.py --name "Имя"
+#
+# Код монтируется томом — правки видны сразу, пересобери данные и обнови страницу.
+
+services:
+  site:
+    build: .
+    container_name: cybersec-site
+    ports:
+      - "8129:8129"
+    volumes:
+      - .:/app
+    working_dir: /app
+
+  # Утилитарный контейнер для разовых команд (генераторы, проверки, CTF).
+  tools:
+    build: .
+    profiles: ["tools"]
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: []
+    command: ["python", "scripts/check_repo.py"]

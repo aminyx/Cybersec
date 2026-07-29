@@ -1,0 +1,79 @@
+# CI репозитория курса. Валидирует каждый PR и push.
+# (Не путать с project-check.yml — тот для ПРОЕКТОВ студентов.)
+#
+# Проверяет:
+#   - структуру и внутренние markdown-ссылки (scripts/check_repo.py);
+#   - что challenges.json — валидный JSON с корректными хэшами;
+#   - что site/data.js и STATS.md пересобраны из актуального контента;
+#   - синтаксис YAML-файлов.
+
+name: ci
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Валидация репозитория
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Структура, ссылки, изображения, challenges
+        run: python scripts/check_repo.py
+
+      - name: данные сайта пересобраны из актуального Markdown
+        run: |
+          python site/build-data.py
+          if ! git diff --quiet -- site/data-*.js; then
+            echo "::error::данные сайта устарели. Запусти 'python site/build-data.py' и закоммить site/data-*.js."
+            git --no-pager diff --stat -- site/data-*.js
+            exit 1
+          fi
+          echo "данные сайта актуальны."
+
+      - name: STATS.md пересобран
+        run: |
+          python scripts/build_stats.py
+          if ! git diff --quiet -- STATS.md; then
+            echo "::error::STATS.md устарел. Запусти 'python scripts/build_stats.py' и закоммить результат."
+            git --no-pager diff -- STATS.md
+            exit 1
+          fi
+          echo "STATS.md актуален."
+
+      - name: Валидность YAML
+        run: |
+          pip install pyyaml >/dev/null
+          python - <<'PY'
+          import sys, yaml
+          from pathlib import Path
+          # rglob находит и файлы в .github (в отличие от glob с **, который пропускает скрытые папки)
+          files = [p for p in Path(".").rglob("*.yml") if ".git" not in p.parts]
+          files += [p for p in Path(".").rglob("*.yaml") if ".git" not in p.parts]
+          bad = 0
+          for f in files:
+              try:
+                  yaml.safe_load(f.read_text(encoding="utf-8"))
+              except Exception as e:
+                  print(f"::error file={f}::невалидный YAML: {e}")
+                  bad += 1
+          print(f"Проверено YAML-файлов: {len(files)}")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Сертификат генерируется (smoke-test)
+        run: |
+          pip install fpdf2 >/dev/null
+          python assets/generate_certificate.py --name "CI Test" --date "2026-01-01" --out /tmp/cert.pdf
+          test -s /tmp/cert.pdf && echo "certificate.pdf сгенерирован."

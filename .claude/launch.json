@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "course-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8129", "--directory", "site"],
+      "port": 8129
+    }
+  ]
+}

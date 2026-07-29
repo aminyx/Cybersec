@@ -1,0 +1,27 @@
+# Нормализация переводов строк: в репозитории всегда LF, в рабочей копии — как принято в ОС.
+# Без этого правки с Windows и Linux дают «весь файл изменён» в diff.
+* text=auto eol=lf
+
+# Явно текстовые
+*.md      text eol=lf
+*.py      text eol=lf
+*.js      text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.json    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.txt     text eol=lf
+*.log     text eol=lf
+Dockerfile text eol=lf
+LICENSE   text eol=lf
+VERSION   text eol=lf
+
+# Бинарные — не трогать
+*.png     binary
+*.jpg     binary
+*.pdf     binary
+*.ico     binary
+
+# Автогенерируемые данные сайта: помечаем, чтобы diff не засорял ревью
+site/data-*.js linguist-generated=true

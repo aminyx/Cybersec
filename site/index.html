@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberSec Course — 270 дней с нуля до Junior</title>
+<meta name="description" content="Бесплатный двуязычный курс кибербезопасности: 270 дней, 9 месяцев, 6 экзаменов, 10 проектов. Русский и таджикский.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23050a14'/><path d='M16 5l9 3.4v7.2c0 5.6-3.8 10.4-9 11.8-5.2-1.4-9-6.2-9-11.8V8.4z' fill='none' stroke='%2334d399' stroke-width='2.2'/><path d='M11.5 16.2l3.2 3.2 6-6.4' fill='none' stroke='%2334d399' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<!-- ============ SKIP LINK ============ -->
+<a class="skip-link" href="#main" data-i18n="skip">К основному содержанию</a>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <div class="hdr__in">
+    <a class="brand" href="#" data-nav="home" aria-label="CyberSec Course — на главную">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 4l10 3.8v8c0 6.2-4.2 11.6-10 13.2-5.8-1.6-10-7-10-13.2v-8z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M11 16.2l3.4 3.4 6.4-6.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand__txt">CyberSec<span class="brand__dim">/Course</span></span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="Основная навигация">
+      <a href="#roadmap" class="hdr__link" data-i18n="nav_roadmap">Карта</a>
+      <a href="#months" class="hdr__link" data-i18n="nav_months">Месяцы</a>
+      <a href="#achievements" class="hdr__link" data-i18n="nav_ach">Достижения</a>
+    </nav>
+
+    <div class="hdr__act">
+      <button class="btn-search" id="searchBtn" aria-label="Поиск по курсу">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="btn-search__txt" data-i18n="search">Поиск</span>
+        <kbd class="btn-search__kbd">/</kbd>
+      </button>
+
+      <div class="lang" role="group" aria-label="Язык / Забон">
+        <button class="lang__b is-on" data-setlang="ru" aria-pressed="true">RU</button>
+        <button class="lang__b" data-setlang="tg" aria-pressed="false">TJ</button>
+      </div>
+    </div>
+  </div>
+  <div class="hdr__prog"><span id="hdrProgBar"></span></div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="hero__in">
+    <p class="hero__kick">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-i18n="hero_kick">Бесплатно · Открытый исходный код · RU + TJ</span>
+    </p>
+
+    <h1 class="hero__h1">
+      <span data-i18n="hero_h1a">От нуля до</span>
+      <span class="hero__accent">Junior</span>
+      <span class="hero__h1b" data-i18n="hero_h1b">за 270 дней</span>
+    </h1>
+
+    <p class="hero__sub" data-i18n="hero_sub">
+      Полный курс кибербезопасности: сети, Linux, веб, пентест, Active Directory, SOC,
+      облако, DevSecOps и AI Security. Каждый день — теория, практика и задание.
+    </p>
+
+    <div class="hero__cta">
+      <button class="btn btn--pri" data-nav="continue">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.5l11 6.5-11 6.5z" fill="currentColor"/></svg>
+        <span id="ctaLabel" data-i18n="cta_start">Начать с Дня 1</span>
+      </button>
+      <a class="btn btn--gho" href="#roadmap" data-i18n="cta_map">Посмотреть карту</a>
+    </div>
+
+    <dl class="hero__stats">
+      <div class="stat"><dt data-i18n="s_days">Дней</dt><dd>270</dd></div>
+      <div class="stat"><dt data-i18n="s_months">Месяцев</dt><dd>9</dd></div>
+      <div class="stat"><dt data-i18n="s_exams">Экзаменов</dt><dd>6</dd></div>
+      <div class="stat"><dt data-i18n="s_proj">Проектов</dt><dd>10</dd></div>
+    </dl>
+  </div>
+
+  <!-- progress console -->
+  <aside class="term" aria-label="Твой прогресс">
+    <div class="term__bar">
+      <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="term__title">progress.sh</span>
+    </div>
+    <div class="term__body">
+      <p class="term__line"><span class="term__p">$</span> <span data-i18n="t_cmd">./progress --user me</span></p>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 120 120" role="img" aria-labelledby="ringLbl">
+          <title id="ringLbl">Прогресс курса</title>
+          <circle class="ring__bg" cx="60" cy="60" r="52"/>
+          <circle class="ring__fg" cx="60" cy="60" r="52" id="ringFg"/>
+        </svg>
+        <div class="ring__mid">
+          <b id="ringPct">0%</b>
+          <span id="ringSub">0 / 270</span>
+        </div>
+      </div>
+      <p class="term__line term__line--ok"><span class="term__p">&gt;</span> <span id="termRank" data-i18n="t_rank0">ранг: не начат</span></p>
+      <p class="term__line term__line--dim"><span class="term__p">&gt;</span> <span id="termNext"></span></p>
+    </div>
+  </aside>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="sec" id="roadmap">
+  <header class="sec__hd">
+    <span class="sec__num">01</span>
+    <h2 class="sec__h2" data-i18n="rm_h">Карта курса</h2>
+    <p class="sec__p" data-i18n="rm_p">Две фазы: фундамент делает тебя нанимаемым, современный стек — конкурентоспособным.</p>
+  </header>
+
+  <div class="rmap">
+    <article class="phase">
+      <div class="phase__hd">
+        <span class="phase__tag">PHASE 01</span>
+        <h3 class="phase__h" data-i18n="ph1_h">Фундамент</h3>
+        <span class="phase__meta" data-i18n="ph1_m">Дни 1–180</span>
+      </div>
+      <ol class="chain" id="chain1"></ol>
+    </article>
+
+    <div class="rmap__arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 60"><path d="M12 2v50m0 0l-7-7m7 7l7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <article class="phase phase--2">
+      <div class="phase__hd">
+        <span class="phase__tag">PHASE 02</span>
+        <h3 class="phase__h" data-i18n="ph2_h">Современный стек</h3>
+        <span class="phase__meta" data-i18n="ph2_m">Дни 181–270</span>
+      </div>
+      <ol class="chain" id="chain2"></ol>
+    </article>
+  </div>
+</section>
+
+<!-- ============ MONTHS ============ -->
+<section class="sec" id="months">
+  <header class="sec__hd">
+    <span class="sec__num">02</span>
+    <h2 class="sec__h2" data-i18n="mo_h">Девять месяцев</h2>
+    <p class="sec__p" data-i18n="mo_p">Открой месяц, чтобы увидеть все дни с теорией, практикой и заданиями.</p>
+  </header>
+  <div class="cards" id="monthCards"></div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="sec" id="achievements">
+  <header class="sec__hd">
+    <span class="sec__num">03</span>
+    <h2 class="sec__h2" data-i18n="ac_h">Достижения</h2>
+    <p class="sec__p" data-i18n="ac_p">Ранги за пройденный путь. Diamond требует ещё экзамены и проекты.</p>
+  </header>
+  <div class="ranks" id="ranks"></div>
+
+  <div class="track">
+    <div class="track__col">
+      <h3 class="track__h"><span data-i18n="ac_exams">Экзамены</span> <b id="examCount">0/6</b></h3>
+      <ul class="ticks" id="examList"></ul>
+    </div>
+    <div class="track__col">
+      <h3 class="track__h"><span data-i18n="ac_projects">Проекты</span> <b id="projCount">0/10</b></h3>
+      <ul class="ticks" id="projList"></ul>
+    </div>
+  </div>
+
+  <p class="reset-row">
+    <button class="reset-btn" id="resetBtn" data-i18n="reset">Сбросить весь прогресс</button>
+    <span class="reset-hint" data-i18n="reset_hint">Прогресс хранится только в этом браузере</span>
+  </p>
+</section>
+
+<!-- ============ MONTH VIEW (day list) ============ -->
+<section class="sec monthview" id="monthView" hidden>
+  <button class="backlink" data-nav="home">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span data-i18n="back">Все месяцы</span>
+  </button>
+  <header class="mv__hd">
+    <span class="mv__num" id="mvNum">01</span>
+    <div>
+      <h2 class="mv__h" id="mvTitle"></h2>
+      <p class="mv__goal" id="mvGoal"></p>
+    </div>
+  </header>
+  <div class="mv__bar"><span id="mvBar"></span></div>
+  <div id="mvWeeks"></div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="ftr__in">
+    <p class="ftr__legal" data-i18n="ftr_legal">
+      Практика только на своих машинах и легальных полигонах. Атака чужих систем без письменного
+      разрешения — уголовное преступление.
+    </p>
+    <p class="ftr__meta">
+      <span data-i18n="ftr_free">Курс бесплатный и открытый</span>
+      <span class="ftr__sep" aria-hidden="true">·</span>
+      <span>RU / TJ</span>
+    </p>
+  </div>
+</footer>
+
+<!-- ============ DAY DRAWER ============ -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__scrim" data-close></div>
+  <aside class="drawer__pnl" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <header class="drawer__hd">
+      <div>
+        <p class="drawer__eyebrow" id="dEyebrow"></p>
+        <h2 class="drawer__h" id="dTitle"></h2>
+      </div>
+      <button class="iconbtn" data-close aria-label="Закрыть">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+    <div class="drawer__body" id="dBody"></div>
+    <footer class="drawer__ft">
+      <button class="btn btn--gho btn--sm" id="dPrev">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="prev">Назад</span>
+      </button>
+      <button class="btn btn--pri btn--sm" id="dDone"></button>
+      <button class="btn btn--gho btn--sm" id="dNext">
+        <span data-i18n="next">Вперёд</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </footer>
+  </aside>
+</div>
+
+<!-- ============ SEARCH ============ -->
+<div class="srch" id="srch" hidden>
+  <div class="srch__scrim" data-close></div>
+  <div class="srch__box" role="dialog" aria-modal="true" aria-label="Поиск по курсу">
+    <div class="srch__inwrap">
+      <svg class="srch__ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13.5 13.5L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input class="srch__in" id="srchIn" type="search" autocomplete="off" spellcheck="false" placeholder="Найти день, тему или инструмент…" aria-label="Поисковый запрос">
+      <button class="iconbtn" data-close aria-label="Закрыть поиск">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="srch__res" id="srchRes" role="listbox" aria-label="Результаты"></div>
+  </div>
+</div>
+
+<!-- Данные грузятся по языку (app.js подтягивает нужный файл) — так студент
+     не качает вторую языковую версию, которая ему не нужна. -->
+<script src="data-index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

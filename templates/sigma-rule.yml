@@ -1,0 +1,60 @@
+# Шаблон Sigma-правила детекта.
+# Sigma — универсальный формат: конвертируется в запросы Splunk/Elastic/Wazuh через sigmac/sigma-cli.
+# Документация: https://github.com/SigmaHQ/sigma  |  Спецификация полей: SigmaHQ/sigma-specification
+#
+# Как пользоваться:
+#   1. Скопируй файл, замени поля в < >.
+#   2. Сгенерируй uuid: python -c "import uuid;print(uuid.uuid4())"
+#   3. Проверь: pip install sigma-cli && sigma check rule.yml
+#   4. Конвертируй под свой SIEM: sigma convert -t splunk rule.yml
+
+title: <Короткое описание того, что ловим>
+id: <uuid — сгенерируй уникальный>
+status: experimental          # experimental | test | stable
+description: <Что обнаруживает правило и почему это подозрительно>
+references:
+  - https://attack.mitre.org/techniques/<Txxxx>/
+  - <ссылка на инцидент/исследование>
+author: <твоё имя>
+date: <ГГГГ/ММ/ДД>
+tags:
+  - attack.<tactic>            # напр. attack.execution
+  - attack.t<xxxx>             # напр. attack.t1059.001
+
+logsource:
+  product: windows            # windows | linux | ...
+  category: process_creation  # process_creation | network_connection | file_event | ...
+
+detection:
+  # selection — что должно совпасть
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - ' -enc'
+      - ' -EncodedCommand'
+      - 'DownloadString'
+  # filter — что исключить (снижаем false positives)
+  filter_legit:
+    ParentImage|startswith: 'C:\Program Files\<доверенное ПО>\'
+  condition: selection and not filter_legit
+
+falsepositives:
+  - <легитимные сценарии, при которых правило может сработать зря>
+
+level: high                   # informational | low | medium | high | critical
+
+# --- Мини-справочник модификаторов полей ---
+# |contains      подстрока
+# |startswith    начинается с
+# |endswith      заканчивается на
+# |re            регулярное выражение
+# |all           все значения списка должны совпасть (по умолчанию — любое)
+# |base64offset  для закодированных команд
+#
+# --- Логика condition ---
+#   selection                        одно условие
+#   sel1 and sel2                    оба
+#   sel1 or sel2                     любое
+#   selection and not filter         с исключением
+#   1 of selection_*                 хотя бы одно из группы
+#   all of selection_*               все из группы

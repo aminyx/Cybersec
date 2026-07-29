@@ -1,0 +1,8 @@
+10.0.0.5 - - [14/Mar/2026:10:01:11 +0000] "GET / HTTP/1.1" 200 1024 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+10.0.0.5 - - [14/Mar/2026:10:01:15 +0000] "GET /style.css HTTP/1.1" 200 512 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+10.0.0.9 - - [14/Mar/2026:10:02:03 +0000] "GET /login HTTP/1.1" 200 2048 "-" "Mozilla/5.0 (X11; Linux x86_64) Firefox/123.0"
+203.0.113.77 - - [14/Mar/2026:10:05:41 +0000] "GET /?id=1 HTTP/1.1" 200 2048 "-" "sqlmap/1.8#stable (https://sqlmap.org)"
+203.0.113.77 - - [14/Mar/2026:10:05:42 +0000] "GET /?id=1%20AND%201=1 HTTP/1.1" 200 2048 "-" "sqlmap/1.8#stable (https://sqlmap.org)"
+203.0.113.77 - - [14/Mar/2026:10:05:43 +0000] "GET /?id=1%20AND%201=2 HTTP/1.1" 500 120 "-" "sqlmap/1.8#stable (https://sqlmap.org)"
+10.0.0.5 - - [14/Mar/2026:10:07:22 +0000] "GET /about HTTP/1.1" 200 1500 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) Safari/604.1"
+10.0.0.12 - - [14/Mar/2026:10:09:00 +0000] "POST /contact HTTP/1.1" 200 300 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) Chrome/122.0"

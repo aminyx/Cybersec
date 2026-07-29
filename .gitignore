@@ -1,0 +1,19 @@
+# локальный прогресс CTF (у каждого свой)
+challenges/.solved
+checks/.passed
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# генерируемый сертификат
+certificate.pdf
+
+# ОС/редактор
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

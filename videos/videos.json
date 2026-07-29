@@ -1,0 +1,62 @@
+{
+  "_comment": "Реестр видео курса. Видео встраиваются в сайт через YouTube-плеер (youtube-nocookie) и играют прямо на странице дня. Мы НЕ размещаем копии чужих видео — это нарушение авторских прав; embed — законный механизм, предусмотренный платформой. Поля: d=день, yt=ID видео, t=название, a=автор, min=примерная длительность в минутах.",
+  "_howto": "Добавить видео: найдите ролик на YouTube, скопируйте ID из ссылки (watch?v=ЭТО_ID), добавьте объект в videos. Затем python site/build-data.py",
+
+  "videos": [
+    {"d":1,"yt":"OLFA0soYGhw","t":"Введение в компьютерные сети","a":"Андрей Созыкин","min":11},
+    {"d":1,"yt":"fEQasuc9zvI","t":"Модель OSI и стек протоколов TCP/IP","a":"Андрей Созыкин","min":18},
+    {"d":1,"yt":"U9FBBlyAkug","t":"Модель ISO OSI подробно","a":"Андрей Созыкин","min":15},
+    {"d":2,"yt":"K-yvp1ti-QU","t":"Сетевой уровень (IP-адресация)","a":"Андрей Созыкин","min":14},
+    {"d":2,"yt":"Y4LK1OZ54h0","t":"Классификация сетей","a":"Андрей Созыкин","min":10},
+    {"d":5,"yt":"Cc5wi1bxmpc","t":"Анализатор сети Wireshark — практика","a":"Андрей Созыкин","min":20},
+    {"d":5,"yt":"roomx2y6K3E","t":"Wireshark: захват и разбор трафика","a":"Андрей Созыкин","min":22},
+    {"d":5,"yt":"S-tuIvOA0ac","t":"Как пользоваться Wireshark: анализ и расшифровка пакетов","a":"Wireshark RU","min":30},
+
+    {"d":8,"yt":"fE1VG1gpXjU","t":"Linux для начинающих: дистрибутивы, Bash, Ubuntu","a":"Курс Linux","min":20},
+    {"d":8,"yt":"o2-k-QvkXjc","t":"Linux Bash — курс для начинающих: пролог","a":"Linux Bash курс","min":12},
+    {"d":8,"yt":"HuCktNNIh6c","t":"Важнейшие директории Linux","a":"Linux Bash курс","min":18},
+    {"d":10,"yt":"lakdAf59w48","t":"Пишем свой первый сервис для systemd","a":"Linux Bash курс","min":22},
+    {"d":12,"yt":"G_T8Ad7hhqA","t":"Первый bash-скрипт: ls, mv, cp, mkdir, пользователи","a":"Linux Bash курс","min":25},
+    {"d":13,"yt":"FCp6j7wcnrE","t":"Bash-скрипты для новичков с нуля","a":"Bash с нуля","min":30},
+
+    {"d":61,"yt":"jJXnjzQmAkQ","t":"Как взламывают сайты: XSS, SQL-injection, CSRF","a":"Web Security RU","min":25},
+    {"d":65,"yt":"vBBOHt905zk","t":"SQL-инъекции: атака, выявление уязвимостей, защита","a":"Тестирование безопасности","min":40},
+    {"d":65,"yt":"y9J6WM3HYbg","t":"Разбор SQL-инъекции на практике для новичков","a":"Веб-уязвимости","min":28},
+    {"d":66,"yt":"pDvSNaQfuIc","t":"SQL-инъекции: от теории к практике","a":"Курс ИБ","min":45},
+    {"d":68,"yt":"2LO-xXpnLHg","t":"XSS-уязвимости: разбор","a":"Web Security RU","min":20},
+    {"d":68,"yt":"827vVw41IE0","t":"Гайд с нуля: XSS и SQL-инъекция","a":"Web Security RU","min":35},
+    {"d":87,"yt":"M08umlZZXY8","t":"Основы безопасности сайта: SQLi, XSS и защита от них","a":"PHP Security","min":50},
+
+    {"d":98,"yt":"FjKUSG5Es7M","t":"Пентест Active Directory — введение","a":"Пентест AD","min":30},
+    {"d":98,"yt":"476I34-4cjw","t":"Kerberos в Windows AD: как работает","a":"Курс «Пентест»","min":60},
+    {"d":99,"yt":"o5qBZeiBj1U","t":"Основы пентеста AD: разведка корпоративных сетей","a":"Red Team RU","min":45},
+    {"d":100,"yt":"mON82a72gbU","t":"Ошибки конфигурации Kerberos и их влияние на безопасность AD","a":"Курс «Пентест»","min":60},
+    {"d":101,"yt":"PHksN898IK8","t":"Windows AD: сбор информации и эскалация привилегий","a":"Курс «Пентест»","min":60},
+    {"d":104,"yt":"GWzNqRqIyBw","t":"ACL-атаки в Windows AD","a":"Курс «Пентест»","min":55},
+
+    {"d":181,"yt":"wgA3yntF_ek","t":"Docker и Docker Compose — полный курс с нуля","a":"Полный курс Docker","min":240},
+    {"d":181,"yt":"_uZQtRyF6Eg","t":"Docker — полный курс для начинающих","a":"Курс Docker","min":180},
+    {"d":182,"yt":"n9uCgUzfeRQ","t":"Docker для начинающих — полный курс","a":"Курс Docker","min":120},
+
+    {"d":188,"yt":"hNLQ3tCP8jQ","t":"Курс по Kubernetes для начинающих","a":"Stashchuk","min":360},
+    {"d":188,"yt":"TwyhnBDOHPw","t":"Kubernetes простым языком на понятном примере","a":"Kubernetes RU","min":25},
+    {"d":189,"yt":"q_nj340pkQo","t":"Основы Kubernetes на очень простом языке","a":"Курс k8s","min":40},
+    {"d":190,"yt":"HYOMMRhE_Ak","t":"Kubernetes за 100 минут: кластер, Docker, nginx","a":"Курс k8s","min":100},
+
+    {"d":195,"yt":"vZ1dCNccZJ4","t":"AWS для начинающих: что нужно знать","a":"AWS RU","min":40},
+    {"d":195,"yt":"8EMjtVUCY0E","t":"AWS Lambda, IAM roles, S3 на практике","a":"Geeks.Show","min":50},
+    {"d":197,"yt":"UuJcSaA9H6s","t":"AWS S3 Bucket: возможности сервиса","a":"AWS RU","min":25}
+  ],
+
+  "playlists": [
+    {"months":[1],"yt":"PLtPJ9lKvJ4oiNMvYbOzCmWy6cRzYAh9B1","t":"Компьютерные сети — полный учебный курс","a":"Андрей Созыкин"},
+    {"months":[1,2],"yt":"PL8jIzbooWPdU5eGYZSaICE6Ux4qBlZSGq","t":"Linux и Bash — курс","a":"Linux Bash курс"},
+    {"months":[1,5],"yt":"PLpNtERXmTkT7gseWsMLya_opVuj-qMfQK","t":"Wireshark — полный курс","a":"Wireshark RU"},
+    {"months":[3,4],"yt":"PLfnFOImnyWRWvTmpK4sBQS5eJ8skG_4_R","t":"Пентест: практика тестирования на проникновение","a":"Курс «Пентест»"},
+    {"months":[5,8],"yt":"PLdJo1XilUTZPOJ1kSnoKheT7YSygP9FIO","t":"Школа информационной безопасности Яндекса","a":"Яндекс"},
+    {"months":[5,8],"yt":"PLQfolpjf5pQIbNjAWD01p46aNjp5CNulI","t":"Курс по информационной безопасности","a":"Яндекс"},
+    {"months":[7],"yt":"PLD5U-C5KK50XMCBkY0U-NLzglcRHzOwAg","t":"Docker: уроки от А до Я","a":"Docker RU"},
+    {"months":[7],"yt":"PLg5SS_4L6LYvN1RqaVesof8KAf-02fJSi","t":"Kubernetes на русском языке","a":"Kubernetes RU"},
+    {"months":[7],"yt":"PLg5SS_4L6LYsxrZ_4xE_U95AtGsIB96k9","t":"AWS на русском языке","a":"AWS RU"}
+  ]
+}

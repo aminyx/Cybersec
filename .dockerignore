@@ -1,0 +1,13 @@
+.git
+.github
+__pycache__
+*.pyc
+.venv
+venv
+challenges/.solved
+certificate.pdf
+*.pdf
+.idea
+.vscode
+.DS_Store
+Thumbs.db
