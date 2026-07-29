@@ -10,6 +10,8 @@
 
 Курс бесплатный. Все платформы официальные. Практика — только на легальных полигонах.
 
+🌐 **Сайт курса:** https://aminyx.github.io/Cybersec/ (включается в Settings → Pages → Source: GitHub Actions)
+
 📊 Актуальная статистика — [STATS.md](STATS.md) · 📘 Полное описание — [docs/PROJECT.md](docs/PROJECT.md) · 🏗️ Архитектура — [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
