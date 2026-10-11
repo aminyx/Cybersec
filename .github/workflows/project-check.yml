@@ -27,7 +27,7 @@ jobs:
     name: Гигиена репозитория
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Проверка обязательных файлов
         run: |
@@ -61,7 +61,7 @@ jobs:
     env:
       GITLEAKS_VERSION: 8.30.1
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0            # gitleaks проверяет всю историю
       # Не gitleaks-action: на push он сканирует «<первый коммит>^..<последний>», а на первом
@@ -82,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     # запускается только если в репо есть Python
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Есть ли Python?
         id: detect
@@ -96,7 +96,7 @@ jobs:
 
       - name: Setup Python
         if: steps.detect.outputs.has_py == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
