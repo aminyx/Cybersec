@@ -14,7 +14,7 @@
 - Начальный доступ: фишинг, initial access техники
 - **C2-фреймворки:** [Cobalt Strike](https://www.cobaltstrike.com/) (обзор), open-source [Sliver](https://github.com/BishopFox/sliver), [Mythic](https://github.com/its-a-feature/Mythic), [Havoc](https://github.com/HavocFramework/Havoc)
 - Командная работа red team, взаимодействие с blue
-- Лабы: HTB Pro Labs, [Vulnlab](https://www.vulnlab.com/), CRTO-стиль
+- Лабы: HTB Pro Labs, [Vulnlab](https://www.hackthebox.com/blog/where-to-find-vulnlab-content-on-htb) (с 2025 года — внутри HTB: Machines и Mini Pro Labs), CRTO-стиль
 
 ## Модуль 2 — Malware Analysis & Reverse Engineering
 - Статический и динамический анализ вредоносов

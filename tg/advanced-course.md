@@ -14,7 +14,7 @@
 - Дастрасии аввалин: фишинг, техникаҳои initial access
 - **C2-фреймворкҳо:** [Cobalt Strike](https://www.cobaltstrike.com/) (шарҳ), open-source [Sliver](https://github.com/BishopFox/sliver), [Mythic](https://github.com/its-a-feature/Mythic), [Havoc](https://github.com/HavocFramework/Havoc)
 - Кори дастаии red team, ҳамкорӣ бо blue
-- Лабҳо: HTB Pro Labs, [Vulnlab](https://www.vulnlab.com/), сабки CRTO
+- Лабҳо: HTB Pro Labs, [Vulnlab](https://www.hackthebox.com/blog/where-to-find-vulnlab-content-on-htb) (аз соли 2025 — дар дохили HTB: Machines ва Mini Pro Labs), сабки CRTO
 
 ## Модули 2 — Malware Analysis & Reverse Engineering
 - Таҳлили статикӣ ва динамикии зараровар
