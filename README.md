@@ -75,6 +75,7 @@
 4. Собери лабораторию по `home-lab.md`.
 5. Открой Месяц 1, День 1 — и вперёд.
 6. Каждый день отмечай прогресс в `progress.md`.
+7. Застрял — спроси в [Discussions → Q&A](https://github.com/aminyx/Cybersec/discussions/categories/q-a).
 
 ---
 
