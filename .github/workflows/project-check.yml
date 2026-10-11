@@ -58,14 +58,24 @@ jobs:
   secrets:
     name: Поиск утёкших секретов
     runs-on: ubuntu-latest
+    env:
+      GITLEAKS_VERSION: 8.30.1
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0            # gitleaks проверяет всю историю
+      # Не gitleaks-action: на push он сканирует «<первый коммит>^..<последний>», а на первом
+      # push проекта первый коммит корневой, родителя у него нет — проверка падала на ровном месте
+      # (gitleaks/gitleaks-action#199). И в репозиториях организаций action требует лицензию.
+      # Сам gitleaks по всей истории работает везде; архив сверяем с официальной контрольной суммой.
       - name: gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfLO "$base/$tarball"
+          curl -sSfL "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt" | grep " $tarball\$" | sha256sum -c -
+          tar -xzf "$tarball" gitleaks
+          ./gitleaks git --redact --verbose .
 
   python:
     name: Python — стиль и безопасность
